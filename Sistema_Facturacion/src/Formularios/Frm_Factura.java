@@ -75,7 +75,7 @@ public class Frm_Factura extends javax.swing.JInternalFrame {
             Date date1 = sdf.parse(ConsFechaCad);//Transforma la fecha de caducidad de las facturas
             Date date2 = sdf.parse(c);//Transforma la fecha de actual
             if ((date1.before(date2))==true){ //Compara las fechas, Si date1 es anterior a date2, before devolverá true
-                JOptionPane.showMessageDialog(null, "Fecha de las asd caducada","Error",JOptionPane.ERROR_MESSAGE);         
+                JOptionPane.showMessageDialog(null, "Fecha de las facturas caducada","Error",JOptionPane.ERROR_MESSAGE);         
             } ;
         } catch (ParseException ex) {
             Logger.getLogger(Frm_Factura.class.getName()).log(Level.SEVERE, null, ex);
