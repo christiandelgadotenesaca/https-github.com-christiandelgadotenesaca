@@ -15,6 +15,7 @@ import javax.swing.JTable;
  */
 public class Cls_Producto {
     private int PROD_CODIGO;
+    //private int PROD_COD_ALTER; 
     private String PROD_DETALLE;
     private int PROD_STOCK;
     private double PROD_V_UNITARIO;
@@ -22,6 +23,7 @@ public class Cls_Producto {
 
     public Cls_Producto(int PROD_CODIGO, String PROD_DETALLE, int PROD_STOCK, double PROD_V_UNITARIO, String PROD_ESTADO) {
         this.PROD_CODIGO = PROD_CODIGO;
+       // this.PROD_COD_ALTER = PROD_COD_ALTER;
         this.PROD_DETALLE = PROD_DETALLE;
         this.PROD_STOCK = PROD_STOCK;
         this.PROD_V_UNITARIO = PROD_V_UNITARIO;
@@ -36,7 +38,10 @@ public class Cls_Producto {
     public int getPROD_CODIGO() {
         return PROD_CODIGO;
     }
-
+    
+//    public int getPROD_COD_ALTER(){
+//        return PROD_COD_ALTER;
+//    }
     /**
      * @return the PROD_DETALLE
      */
@@ -83,7 +88,7 @@ public class Cls_Producto {
    public void CargarDatosTODOS(JTable tblProductos)
     {
     //select* sirve para selecionar todos los datos que existen en la tabla
-     cnx.CargarTabla("Select PROD_CODIGO as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO, PROD_ESTADO as ESTADO  from producto_tb", tblProductos);
+     cnx.CargarTabla("Select PROD_CODIGO as CODIGO,PROD_COD_ALTER as ALTERNO, PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO, PROD_ESTADO as ESTADO  from producto_tb", tblProductos);
      
     }
    //Frm_Buscar_Productos

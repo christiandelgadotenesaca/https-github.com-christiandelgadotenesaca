@@ -276,7 +276,6 @@ public class Frm_Productos extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblProductos);
         if (tblProductos.getColumnModel().getColumnCount() > 0) {
-            tblProductos.getColumnModel().getColumn(0).setPreferredWidth(50);
             tblProductos.getColumnModel().getColumn(1).setPreferredWidth(300);
         }
 

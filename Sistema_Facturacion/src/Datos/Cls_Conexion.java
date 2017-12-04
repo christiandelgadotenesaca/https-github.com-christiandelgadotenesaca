@@ -148,29 +148,26 @@ public Cls_Conexion(){
  
  
         
-  public void CargarTabla(String instruccionsql,JTable NombreTabla)
+    public void CargarTabla(String instruccionsql,JTable NombreTabla)
     {
-    try
-    {
-    //para establecer el modelo al JTable
-        DefaultTableModel modelo = new DefaultTableModel();
-        NombreTabla.setModel(modelo);
-        ResultSet rs=Consulta(instruccionsql);
-        //Obteniendo la informacion de las columnas que estan siendo consultadas
-        ResultSetMetaData rsMd=rs.getMetaData();
-        //Establecer como cabezeras el nombre de las columnas
-        for(int i=1;i<=rsMd.getColumnCount();i++)
-        {modelo.addColumn(rsMd.getColumnLabel(i));}
-        //creando las filas para el JTable
-        while(rs.next()){
-        Object[]fila=new Object[rsMd.getColumnCount()];
-        for(int i=0; i<rsMd.getColumnCount();i++)
-        {
-        fila[i]=rs.getObject(i+1);
-        }
-        modelo.addRow(fila);
-        }
-        rs.close();
-    }catch(Exception ex){}
-  }
+        try{
+            ResultSet rs=Consulta(instruccionsql);
+            //Obteniendo la informacion de las columnas que estan siendo consultadas
+            ResultSetMetaData rsMd=rs.getMetaData();
+            //para establecer el modelo al JTable
+            DefaultTableModel modelo = new DefaultTableModel();
+            //Establecer como cabezeras el nombre de las columnas
+            for(int i=1;i<=rsMd.getColumnCount();i++){modelo.addColumn(rsMd.getColumnLabel(i));}
+            //creando las filas para el JTable
+            while(rs.next()){
+                Object[]fila=new Object[rsMd.getColumnCount()];
+                for(int i=0; i<rsMd.getColumnCount();i++){
+                    fila[i]=rs.getObject(i+1);
+                }
+                modelo.addRow(fila);
+            }
+            NombreTabla.setModel(modelo);
+            rs.close();
+        }catch(Exception ex){}
+    }
 }
