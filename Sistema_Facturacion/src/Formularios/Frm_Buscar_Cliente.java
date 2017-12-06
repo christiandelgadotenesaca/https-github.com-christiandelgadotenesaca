@@ -63,7 +63,7 @@ public class Frm_Buscar_Cliente extends javax.swing.JInternalFrame {
                 .addGap(114, 114, 114)
                 .addComponent(jLabel7)
                 .addGap(36, 36, 36)
-                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

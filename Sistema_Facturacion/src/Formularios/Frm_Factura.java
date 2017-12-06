@@ -10,6 +10,7 @@ import Clases.Cls_Cabecera;
 import Clases.Cls_Detalle;
 import Clases.Cls_Transacciones;
 import Datos.Cls_Conexion;
+import static Formularios.Frm_Menu.desktopPane;
 import Vistas.Reportes;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -269,7 +270,7 @@ public class Frm_Factura extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -287,19 +288,17 @@ public class Frm_Factura extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
-                        .addComponent(jLabel5))
-                    .addComponent(lbl_total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel5)
+                    .addComponent(lbl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -690,6 +689,9 @@ public class Frm_Factura extends javax.swing.JInternalFrame {
                 }catch (SQLException ex) {
                     Logger.getLogger(Frm_Factura.class.getName()).log(Level.SEVERE,null,ex);
                 }
+                //Cierra la ventana al finalizar la factura 
+                desktopPane.removeAll();
+                desktopPane.repaint();
             }
             else if (Double.parseDouble(lbl_total.getText())==0){
             JOptionPane.showMessageDialog(null, "Error necesita almenos un articulo para facturar");

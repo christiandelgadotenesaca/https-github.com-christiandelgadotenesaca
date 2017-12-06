@@ -118,9 +118,24 @@ public Cls_Conexion(){
         }
         return Fecha;
     }
+    public Integer ConsultaCodigoProd(String sql){
+    Integer Codigo=null;
+    ResultSet res=null;
+    try
+        {
+            Statement s=Conect.createStatement(ResultSet.TYPE_FORWARD_ONLY,ResultSet.CONCUR_READ_ONLY);
+            res=s.executeQuery(sql);
+            while (res.next()){
+                Codigo= Integer.parseInt(res.getString("MAXIMO"));
+            }
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null,e.getMessage(),"No se encontro los datos",JOptionPane.ERROR_MESSAGE);
+        }
+        return Codigo;
+    }
+    
     public ResultSet ConsultarTotalFecha(String sql)
     {
-       
     ResultSet res=null;
     try
         {

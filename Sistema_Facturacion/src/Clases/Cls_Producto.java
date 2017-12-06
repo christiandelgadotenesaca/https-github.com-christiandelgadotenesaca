@@ -15,13 +15,15 @@ import javax.swing.JTable;
  */
 public class Cls_Producto {
     private int PROD_CODIGO;
+    private int PROD_COD_ALTER; 
     private String PROD_DETALLE;
     private int PROD_STOCK;
     private double PROD_V_UNITARIO;
     private String PROD_ESTADO;
 
-    public Cls_Producto(int PROD_CODIGO, String PROD_DETALLE, int PROD_STOCK, double PROD_V_UNITARIO, String PROD_ESTADO) {
+    public Cls_Producto(int PROD_CODIGO,int PROD_COD_ALTER, String PROD_DETALLE, int PROD_STOCK, double PROD_V_UNITARIO, String PROD_ESTADO) {
         this.PROD_CODIGO = PROD_CODIGO;
+        this.PROD_COD_ALTER = PROD_COD_ALTER; 
         this.PROD_DETALLE = PROD_DETALLE;
         this.PROD_STOCK = PROD_STOCK;
         this.PROD_V_UNITARIO = PROD_V_UNITARIO;
@@ -37,6 +39,12 @@ public class Cls_Producto {
         return PROD_CODIGO;
     }
 
+    /**
+     * @return the PROD_COD_ALTER
+     */
+    public int getPROD_COD_ALTER() {
+        return PROD_COD_ALTER;
+    }
     /**
      * @return the PROD_DETALLE
      */
@@ -70,34 +78,40 @@ public class Cls_Producto {
     }  
     public void GuardarActualizar()
     {
-        cnx.ejecutar("Call SPGuardarActualizarProductos ("+PROD_CODIGO+",'"+PROD_DETALLE+"',"+PROD_STOCK+","+PROD_V_UNITARIO+",'"+PROD_ESTADO+"')");
+        cnx.ejecutar("Call SPGuardarActualizarProductos ("+PROD_CODIGO+","+PROD_COD_ALTER+",'"+PROD_DETALLE+"',"+PROD_STOCK+","+PROD_V_UNITARIO+",'"+PROD_ESTADO+"')");
     }
   //Frm_Buscar_Productos
    public void CargarDatos(JTable tblProductos)
     {
     //select* sirve para selecionar todos los datos que existen en la tabla
-     cnx.CargarTabla("Select PROD_CODIGO as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO  from producto_tb WHERE PROD_ESTADO='ACTIVO'", tblProductos);
+     cnx.CargarTabla("Select PROD_CODIGO as COD,PROD_COD_ALTER as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO  from producto_tb WHERE PROD_ESTADO='ACTIVO'", tblProductos);
      
     }
    //Frm_Productos
    public void CargarDatosTODOS(JTable tblProductos)
     {
     //select* sirve para selecionar todos los datos que existen en la tabla
-     cnx.CargarTabla("Select PROD_CODIGO as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO, PROD_ESTADO as ESTADO  from producto_tb", tblProductos);
+     cnx.CargarTabla("Select PROD_CODIGO as COD,PROD_COD_ALTER as CODIGO, PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO, PROD_ESTADO as ESTADO  from producto_tb", tblProductos);
      
     }
    //Frm_Buscar_Productos
    public void CargarDatosBuscados(JTable tblProductos, String valor)
     {
     //select* sirve para selecionar todos los datos que existen en la tabla
-     cnx.CargarTabla("Select PROD_CODIGO as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO from producto_tb where CONCAT (PROD_CODIGO,' ',PROD_DETALLE)  LIKE '%"+valor+"%' AND PROD_ESTADO ='ACTIVO' ", tblProductos);
+     cnx.CargarTabla("Select PROD_CODIGO as COD,PROD_COD_ALTER as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO from producto_tb where CONCAT (PROD_COD_ALTER,' ',PROD_DETALLE)  LIKE '%"+valor+"%' AND PROD_ESTADO ='ACTIVO' ", tblProductos);
      
     }
    //Frm_Productos
    public void CargarDatosBuscadosTODOS(JTable tblProductos, String valor)
     {
     //select* sirve para selecionar todos los datos que existen en la tabla
-     cnx.CargarTabla("Select PROD_CODIGO as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO, PROD_ESTADO as ESTADO from producto_tb where CONCAT (PROD_CODIGO,' ',PROD_DETALLE)  LIKE '%"+valor+"%'", tblProductos);
+     cnx.CargarTabla("Select PROD_CODIGO as COD,PROD_COD_ALTER as CODIGO,PROD_DETALLE as DETALLE,PROD_STOCK as STOCK,PROD_V_UNITARIO as VALOR_UNITARIO, PROD_ESTADO as ESTADO from producto_tb where CONCAT (PROD_COD_ALTER,' ',PROD_DETALLE)  LIKE '%"+valor+"%'", tblProductos);
      
     }
+    public Integer ConsultarProd(){
+        Integer Consultarprod = cnx.ConsultaCodigoProd("Select max(PROD_CODIGO)+1 as MAXIMO from producto_tb") ; 
+        return Consultarprod;   
+    }
+
+    
 }

@@ -141,9 +141,9 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
          //limpia todo 
-        //desktopPane.removeAll();
-        //desktopPane.repaint();
-        //
+        desktopPane.removeAll();
+        desktopPane.repaint();
+        
         Frm_Clientes b= new Frm_Clientes();
         b.setBounds(0, 0, 1360, 680);
         desktopPane.add(b);
@@ -153,8 +153,8 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         //limpia todo 
-        //desktopPane.removeAll();
-       // desktopPane.repaint();
+        desktopPane.removeAll();
+        desktopPane.repaint();
         //vuelve a llamar al formulario
         Frm_Productos b= new Frm_Productos();
         b.setBounds(0, 0, 1360, 680);
@@ -165,20 +165,21 @@ public class Frm_Menu extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         //limpia todo 
-       // desktopPane.removeAll();
-       // desktopPane.repaint();
+        desktopPane.removeAll();
+        desktopPane.repaint();
         //vuelve a llamar al formulario
         Frm_Factura b= new Frm_Factura();
         desktopPane.add(b);
         b.setVisible(true);
         b.setLocation(05,05);
         
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        //limpia todo 
-       // desktopPane.removeAll();
-      //  desktopPane.repaint();
+        desktopPane.removeAll();
+        desktopPane.repaint();
         //vuelve a llamar al formulario
        Frm_Reporte_Ventas b = new Frm_Reporte_Ventas();
        b.setBounds(0, 0, 1360, 680);

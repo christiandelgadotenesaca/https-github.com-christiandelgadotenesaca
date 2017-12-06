@@ -33,6 +33,7 @@ public class Frm_Buscar_Producto extends javax.swing.JInternalFrame {
         c1.CargarDatos(tblProductos);
         bandera = false;
         banderanumero=false;
+        ajustartabla();
     }
 
     /**
@@ -70,15 +71,15 @@ public class Frm_Buscar_Producto extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(115, 115, 115)
-                .addComponent(jLabel7)
-                .addGap(35, 35, 35)
-                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(389, 389, 389))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel7)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -115,7 +116,7 @@ public class Frm_Buscar_Producto extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -128,16 +129,16 @@ public class Frm_Buscar_Producto extends javax.swing.JInternalFrame {
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, Short.MAX_VALUE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 486, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
@@ -146,39 +147,48 @@ public class Frm_Buscar_Producto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void ajustartabla(){
+        tblProductos.getColumnModel().getColumn(0).setMaxWidth(0);
+        tblProductos.getColumnModel().getColumn(0).setMinWidth(0);
+        tblProductos.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);   
+        tblProductos.getColumnModel().getColumn(1).setMinWidth(100);
+        tblProductos.getColumnModel().getColumn(1).setMaxWidth(100);
+        tblProductos.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(100);
+        tblProductos.getColumnModel().getColumn(2).setMinWidth(500);
+        tblProductos.getColumnModel().getColumn(2).setMaxWidth(500);
+        tblProductos.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(500);
+        tblProductos.getColumnModel().getColumn(3).setMinWidth(50);
+        tblProductos.getColumnModel().getColumn(3).setMaxWidth(50);
+        tblProductos.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(50);
+        tblProductos.getColumnModel().getColumn(4).setMinWidth(100);
+        tblProductos.getColumnModel().getColumn(4).setMaxWidth(100);
+        tblProductos.getTableHeader().getColumnModel().getColumn(4).setMaxWidth(100);
+    }
     private void txt_buscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyReleased
         Cls_Producto c1 = new Cls_Producto();
         c1.CargarDatosBuscados(tblProductos,txt_buscar.getText());
+        ajustartabla();
     }//GEN-LAST:event_txt_buscarKeyReleased
 
     private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductosMouseClicked
      int valor =  showConfirmDialog(null,"¿Seleccionar el Producto?","Opcion",JOptionPane.YES_NO_OPTION);
-        
         if(valor==0){
-           
             if(tblProductos.getSelectedRow()>=0)
             {
                 //bandera para validar que el codigo no se repita
                 bandera=false;  
                 String [] datosLeidos={
-//                    0
                     String.valueOf(tblProductos.getValueAt(tblProductos.getSelectedRow(),0)),
-//                    1
-                    String.valueOf(tblProductos.getValueAt(tblProductos.getSelectedRow(),1)),
-//                    String.valueOf(tblProductos.getValueAt(tblProductos.getSelectedRow(),2)),
-//                    2
-                    String.valueOf(tblProductos.getValueAt(tblProductos.getSelectedRow(),3)),
+                    String.valueOf(tblProductos.getValueAt(tblProductos.getSelectedRow(),2)),
+                    String.valueOf(tblProductos.getValueAt(tblProductos.getSelectedRow(),4)),
                 };
             // validar que el codigo no se repita    
             if (i>0){    
                 for (int n=0;n<i;n++){
-//                     JOptionPane.showMessageDialog(null,matriz[n][0] );
-//                     JOptionPane.showMessageDialog(null,datosLeidos[0] );
-                        if (Integer.parseInt(matriz[n][0])==Integer.parseInt(datosLeidos[0]))
-                        {
+                    if (Integer.parseInt(matriz[n][0])==Integer.parseInt(datosLeidos[0])){
                          bandera= true;
                          JOptionPane.showMessageDialog(null, "Error el producto seleccionado ya se encuentra en la factura");
-                        }
+                    }
                 }
             }
             //bandera para validar que el codigo no se repita
@@ -216,13 +226,11 @@ public class Frm_Buscar_Producto extends javax.swing.JInternalFrame {
                     //v_total
                     matriz [i][4]=String.valueOf(total_item);
                     
-                    for(int x=0;x<=i;x++){
-                        
+                    for(int x=0;x<=i;x++){      
                         Frm_Factura.tbl_detalle.setValueAt(Integer.parseInt(matriz[x][1]), i, 0);
                         Frm_Factura.tbl_detalle.setValueAt(matriz[x][2], i, 1);
                         Frm_Factura.tbl_detalle.setValueAt(matriz[x][3], i, 2);
                         Frm_Factura.tbl_detalle.setValueAt(matriz[x][4], i, 3);
- 
                     }
                     //cargar total
                     total = total + total_item;
